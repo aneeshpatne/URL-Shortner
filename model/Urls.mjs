@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 const schema = new mongoose.Schema({   
-    longUrl: String,
+    originalUrl: String,
     shortUrl: {type: String, unique: true},
     createdAt: {
         type: Date,

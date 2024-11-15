@@ -2,10 +2,12 @@ import { Url } from "../model/Urls.mjs";
 import {URLShortner} from "../services/urlService.mjs";
 export const shortenURL = async (req, res) =>{
     const {originalUrl} = req.body;
+
     try{
         const shortUrl = URLShortner();
+        console.log(originalUrl);
         const url = await Url.create({originalUrl, shortUrl});
-        res.json({shortUrl: url.shortUrl});
+        res.json({shortUrl: url.shortUrl, originalUrl: url.originalUrl});
     }
     catch(err){
         res.status(500).json({error: 'Server Error'});
