@@ -4,6 +4,10 @@ export const shortenURL = async (req, res) =>{
     const {originalUrl} = req.body;
 
     try{
+        let fetchURL = await Url.findOne({originalUrl});
+        if(fetchURL){
+            return res.json({shortUrl: fetchURL.shortUrl, originalUrl: fetchURL.originalUrl});
+        }
         const shortUrl = URLShortner();
         console.log(originalUrl);
         const url = await Url.create({originalUrl, shortUrl});

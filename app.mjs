@@ -4,6 +4,6 @@ import router from './routes/urlRoutes.mjs';
 import  errorHandler from './middleware/errorHandler.mjs';
 const app = express();
 app.use(express.json());
-app.use('/api', router);
+app.use('/', router);
 app.use(errorHandler);
 export default app;
