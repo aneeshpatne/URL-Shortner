@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const schema = new mongoose.schema({   
+const schema = new mongoose.Schema({   
     longUrl: String,
     shortUrl: {type: String, unique: true},
     createdAt: {

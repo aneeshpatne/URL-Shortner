@@ -1,4 +1,4 @@
-import Url from "../models/Urls.mjs";
+import { Url } from "../model/Urls.mjs";
 import {URLShortner} from "../services/urlService.mjs";
 export const shortenURL = async (req, res) =>{
     const {originalUrl} = req.body;
