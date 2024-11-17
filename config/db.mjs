@@ -3,12 +3,21 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 dotenv.config();
 const mongo_URI = process.env.MONGO_URI;
+let isConnected;
+
 export const connectDB = async () => {
-    try{
-        await mongoose.connect(mongo_URI);
-        console.log('MongoDB connected');
+    if (isConnected) {
+        console.log('Using existing database connection');
+        return;
     }
-    catch(err){
+
+    try {
+        const db = await mongoose.connect(mongo_URI, {
+            maxPoolSize: 10,
+        });
+        isConnected = db.connections[0].readyState;
+        console.log('MongoDB connected');
+    } catch (err) {
         console.error(err);
     }
-}
+};
