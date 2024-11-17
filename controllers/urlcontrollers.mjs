@@ -9,12 +9,11 @@ export const shortenURL = async (req, res) =>{
     try{
         let fetchURL = await Url.findOne({originalUrl});
         if(fetchURL){
-            return res.json({shortUrl: fetchURL.shortUrl, originalUrl: fetchURL.originalUrl});
+            return res.json({shortUrl: 'https://go.aneeshpatne.com/'+ fetchURL.shortUrl, originalUrl: fetchURL.originalUrl});
         }
         const shortUrl = URLShortner();
-        console.log(originalUrl);
-        const url = await Url.create({originalUrl, shortUrl});
-        res.json({shortUrl: url.shortUrl, originalUrl: url.originalUrl});
+        let url = await Url.create({originalUrl, shortUrl});
+        res.json({shortUrl:'https://go.aneeshpatne.com/'+ url.shortUrl, originalUrl: url.originalUrl});
     }
     catch(err){
         res.status(500).json({error: 'Server Error'});

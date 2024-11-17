@@ -1,8 +1,9 @@
 import express from 'express';
-import bodyParser from 'body-parser';
+import cors from 'cors';
 import router from './routes/urlRoutes.mjs';
 import  errorHandler from './middleware/errorHandler.mjs';
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use('/', router);
 app.use(errorHandler);
