@@ -1,7 +1,7 @@
 import { Url } from "../model/Urls.mjs";
 import {URLShortner} from "../services/urlService.mjs";
 export const shortenURL = async (req, res) =>{
-    const {originalUrl} = req.body;
+    let {originalUrl} = req.body;
     if (!originalUrl.startsWith('https://')) {
         originalUrl = 'https://' + originalUrl;
     }
