@@ -5,7 +5,7 @@ import  errorHandler from './middleware/errorHandler.mjs';
 const app = express();
 app.use(cors());
 const corsOptions = {
-    origin: 'https://url.aneeshpatne.com/',
+    origin: 'https://url.aneeshpatne.com',
     optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
